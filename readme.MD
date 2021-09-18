@@ -1,5 +1,7 @@
 # Tobias a Discord BOT 🤖
 
+![](https://img.shields.io/github/last-commit/brn1x/tobias-discord-bot)
+
 ![Tobias icon](https://i.ibb.co/bBt2nqj/padeiro.png)
 
 ## Tobias is a simple bot for Discord who can play your song!

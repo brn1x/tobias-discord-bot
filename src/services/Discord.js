@@ -6,14 +6,15 @@ const DistubeService = require('./Distube')
 class DiscordService {
   client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] })
   botToken
-  constructor (botToken) {
+  prefix
+  constructor (botToken, prefix) {
     this.botToken = botToken
+    this.prefix = prefix
     this.client.distube = new DistubeService(this.client)
     this.client.distube.handleEvents()
   }
 
   start() {
-    const prefix = '%'
     this.client.commands = new Discord.Collection()
     getCommands(this.client.commands)
     this.client.once('ready', () => {
@@ -21,9 +22,9 @@ class DiscordService {
     })
     
     this.client.on('message', message => {
-      if (!message.content.startsWith(prefix) || message.author.bot) return
+      if (!message.content.startsWith(this.prefix) || message.author.bot) return
     
-      const command = getCommandFromMessage(prefix, message.content)
+      const command = getCommandFromMessage(this.prefix, message.content)
     
       if (this.client.commands.get(command)) {
         const args = this.getArgs(message)
