@@ -7,11 +7,13 @@ class DiscordService {
   client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] })
   botToken
   prefix
+  channels
   constructor (botToken, prefix) {
     this.botToken = botToken
     this.prefix = prefix
     this.client.distube = new DistubeService(this.client)
     this.client.distube.handleEvents()
+    this.channels = process.env.channels ? process.env.channels.split(',') : null
   }
 
   start() {
@@ -22,7 +24,7 @@ class DiscordService {
     })
     
     this.client.on('message', message => {
-      if (!message.content.startsWith(this.prefix) || message.author.bot) return
+      if (this.validadeBotAction(message)) return
     
       const command = getCommandFromMessage(this.prefix, message.content)
     
@@ -39,6 +41,15 @@ class DiscordService {
     let args = message.content.split(' ')
     args.shift()
     return args
+  }
+
+  validadeBotAction(message) {
+    if (!message.content.startsWith(this.prefix) ||
+      message.author.bot ||
+      (this.channels && !this.channels.includes(message.channel.name))
+    ) return true
+
+    return false
   }
 }
 

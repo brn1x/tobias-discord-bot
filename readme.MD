@@ -9,10 +9,10 @@
 To play the songs you only need to use the prefix, which is <mark>%</mark> and them the song name, like down below
 
 ```
-%play YOUR SONG NAME 
+!play YOUR SONG NAME 
 ```
 ```
-%play youtube link
+!play youtube link
 ```
 
 ## Test it by yourself
