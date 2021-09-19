@@ -1,0 +1,8 @@
+version: "3.0"
+services: 
+  discord-bot:
+    image: brnx1/tobias-discord-bot:latest
+    ports:
+      - 3000:3000
+    environment:
+      - TESTE=teste123
