@@ -12,7 +12,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Docker build
+      
+      - name: docker login
+        env: 
+          DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: |
+          docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
+      
+      - name: docker build
         run: |
           docker build . -t brnx1/tobias-discord-bot:latest
+      
+      - name: docker push
+        run: |
+          docker push brnx1/tobias-discord-bot:latest
