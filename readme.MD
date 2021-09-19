@@ -1,5 +1,7 @@
 # Tobias a Discord BOT 🤖
 
+![](https://img.shields.io/github/last-commit/brn1x/tobias-discord-bot)
+
 ![Tobias icon](https://i.ibb.co/bBt2nqj/padeiro.png)
 
 ## Tobias is a simple bot for Discord who can play your song!
@@ -7,10 +9,10 @@
 To play the songs you only need to use the prefix, which is <mark>%</mark> and them the song name, like down below
 
 ```
-%play YOUR SONG NAME 
+!play YOUR SONG NAME 
 ```
 ```
-%play youtube link
+!play youtube link
 ```
 
 ## Test it by yourself
