@@ -30,7 +30,12 @@ class DiscordService {
     
       if (this.client.commands.get(command)) {
         const args = this.getArgs(message)
-        this.client.commands.get(command).execute(message, args, this.client)
+        try {
+          this.client.commands.get(command).execute(message, args, this.client)
+        } catch (error) {
+          console.error(error)
+          this.client.commands.get(command).execute(message, args, this.client)
+        }
       }
     })
 
